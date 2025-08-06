@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 export default function Products() {
   const products = [
-    { name: 'BPC-157 10mg', price: '$150.00', image: '/products/bpc157.png' },
-    { name: 'TB-500 10mg', price: '$150.00', image: '/products/tb500.png' },
-    { name: 'Bacteriostatic Water 10ml', price: '$30.00', image: '/products/bacteriostatic.png' },
+    { name: 'BPC-157 10mg', price: '$150.00', image: '/products/banner.png' },
+    { name: 'TB-500 10mg', price: '$150.00', image: '/products/banner.png' },
+    { name: 'Bacteriostatic Water 10ml', price: '$30.00', image: '/products/banner.png' },
     { name: 'CJC-1295 w/ DAC 2mg', price: '$90.00', image: '/products/banner.png' },
     { name: 'CJC-1295 no DAC 2mg', price: '$90.00', image: '/products/banner.png' },
     { name: 'Ipamorelin 2mg', price: '$90.00', image: '/products/banner.png' },
