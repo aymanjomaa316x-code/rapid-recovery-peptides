@@ -3,12 +3,6 @@
   padding: 4rem;
 }
 
-.logo {
-  width: 200px;
-  height: auto;
-  margin-bottom: 2rem;
-}
-
 .title {
   font-size: 2rem;
   font-weight: bold;
@@ -16,12 +10,22 @@
 }
 
 .description {
-  font-size: 1.2rem;
-  color: #555;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.nav {
+  margin-bottom: 2rem;
+}
+
+.nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #0070f3;
 }
 
 .footer {
   margin-top: 4rem;
   font-size: 0.9rem;
-  color: #999;
+  color: #888;
 }
