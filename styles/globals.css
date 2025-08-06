@@ -1,1 +1,26 @@
-// globals.css - placeholder content
+// 📁 styles/globals.css
+/* This file applies styles globally across all pages */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #fff;
+  color: #111;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
