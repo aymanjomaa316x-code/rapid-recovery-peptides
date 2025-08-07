@@ -17,13 +17,16 @@ export default function Home() {
       </Head>
 
       <section className="text-center py-12 px-6">
-        <h1 className="text-5xl font-bold text-yellow-400 mb-4">Rapid Recovery Peptides</h1>
-        <p className="text-lg max-w-3xl mx-auto mb-6">
-          Premium peptides for optimal recovery, performance, and wellness. Explore our growing range of research-grade products.
-        </p>
-        <Link href="/products" className="inline-block bg-yellow-400 text-black font-medium px-6 py-3 rounded-full hover:bg-yellow-500 transition">
-          Browse Products
-        </Link>
+        <div className="flex flex-col items-center">
+          <Image src="/logo.png" alt="Rapid Recovery Logo" width={180} height={180} className="mb-4" />
+          <h1 className="text-5xl font-bold text-yellow-400 mb-4">Rapid Recovery Peptides</h1>
+          <p className="text-lg max-w-3xl mx-auto mb-6">
+            Premium peptides for optimal recovery, performance, and wellness. Explore our growing range of research-grade products.
+          </p>
+          <Link href="/products" className="inline-block bg-yellow-400 text-black font-medium px-6 py-3 rounded-full hover:bg-yellow-500 transition">
+            Browse Products
+          </Link>
+        </div>
       </section>
 
       <section className="py-10 px-6">
