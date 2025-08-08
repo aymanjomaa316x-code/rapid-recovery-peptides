@@ -1,31 +1,23 @@
 /* 📁 styles/globals.css */
 
-/* 1️⃣ Load Tailwind styles */
+/* Load Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2️⃣ (Optional) Keep or adjust your existing custom CSS */
-html,
-body {
+/* Keep it minimal so Tailwind can control styles */
+html, body {
   padding: 0;
   margin: 0;
+  /* Let the page set its own background via Tailwind */
+  background: transparent;
+  color: inherit;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #fff; /* You can change this to black later for your theme */
-  color: #111;
 }
 
-a {
-  color: #0070f3;
-  text-decoration: none;
-  margin: 0 1rem;
-}
+/* Remove the old blue link override */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-a:hover {
-  text-decoration: underline;
-}
-
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
