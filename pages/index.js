@@ -28,6 +28,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen text-white" style={{ backgroundColor: colors.black }}>
+      {/* Notice Bar */}
+      <div className="bg-neutral-900 text-center py-2 text-sm" style={{ color: colors.goldLight }}>
+        Website currently under construction — Please email <a href="mailto:info@rapidrecoverypeptides.com.au" className="underline">info@rapidrecoverypeptides.com.au</a> to buy peptides or for more info.
+      </div>
+
       {/* Background DNA effect */}
       <div
         aria-hidden
@@ -56,66 +61,54 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <h1
-              className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl"
+      <section className="relative text-center">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+          <h1
+            className="text-6xl font-bold tracking-tight sm:text-7xl md:text-8xl"
+            style={{
+              backgroundImage: `linear-gradient(90deg, ${colors.goldLight}, ${colors.goldDark})`,
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Recover faster. Train harder.
+          </h1>
+          <p className="mt-6 text-xl text-neutral-300 md:text-2xl">
+            Australia’s trusted source for premium peptides. Lab-tested. Fast shipping.
+          </p>
+          <div className="mt-8">
+            <a
+              href="/products"
+              className="inline-block rounded-xl px-8 py-4 text-lg font-medium shadow-sm hover:scale-[1.02] transition"
               style={{
                 backgroundImage: `linear-gradient(90deg, ${colors.goldLight}, ${colors.goldDark})`,
-                WebkitBackgroundClip: "text",
-                color: "transparent",
+                color: "#0B0B0B",
               }}
             >
-              Recover faster. Train harder.
-            </h1>
-            <p className="mt-4 text-lg text-neutral-300 md:text-xl">
-              Australia’s trusted source for premium peptides. Lab-tested. Fast shipping.
-            </p>
-            <div className="mt-8">
-              <a
-                href="/products"
-                className="inline-block rounded-xl px-6 py-3 text-base font-medium shadow-sm hover:scale-[1.02] transition"
-                style={{
-                  backgroundImage: `linear-gradient(90deg, ${colors.goldLight}, ${colors.goldDark})`,
-                  color: "#0B0B0B",
-                }}
-              >
-                View Products
-              </a>
-            </div>
+              View Products
+            </a>
           </div>
-        </div>
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="h-px w-full" style={{
-            backgroundImage: `linear-gradient(90deg, transparent, ${colors.goldDark}, transparent)`
-          }} />
-        </div>
-      </section>
-
-      {/* Banner Image */}
-      <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 pt-10">
-          <img src="/products/banner.png" alt="Rapid Recovery Peptides bottle" className="mx-auto h-auto w-full max-w-sm rounded-2xl border border-neutral-800/60 bg-neutral-950/40 p-6" />
         </div>
       </section>
 
       {/* Featured Products */}
       <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 py-12">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-semibold">Featured Products</h2>
-            <a href="/products" className="text-sm underline underline-offset-4 hover:opacity-90">View all</a>
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-6xl px-4 pt-10 text-center">
+          <img
+            src="/products/banner.png"
+            alt="Rapid Recovery Peptides bottle"
+            className="mx-auto h-auto w-1/4 object-contain mix-blend-multiply"
+            style={{ background: "transparent" }}
+          />
+          <h2 className="text-4xl font-semibold mb-8 mt-8">Featured Products</h2>
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((p) => (
               <a key={p.name} href={p.href} className="group rounded-2xl border border-neutral-800/70 bg-neutral-950/40 p-4 transition hover:-translate-y-0.5 hover:border-neutral-700">
                 <div className="aspect-[4/5] overflow-hidden rounded-xl bg-black/30">
-                  <img src={p.image} alt={p.name} className="h-full w-full object-contain p-6 transition group-hover:scale-[1.02]" />
+                  <img src={p.image} alt={p.name} className="h-full w-full object-contain p-6 transition group-hover:scale-[1.02] mix-blend-multiply" />
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <h3 className="text-base font-medium text-neutral-100">{p.name}</h3>
+                  <h3 className="text-lg font-medium text-neutral-100">{p.name}</h3>
                   <span
                     className="rounded-md px-2 py-1 text-sm font-semibold"
                     style={{
@@ -134,24 +127,18 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="relative mt-10 border-t border-neutral-900/80">
-        <div className="mx-auto max-w-6xl px-4 py-10">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="space-y-3">
-              <img src="/logo.png" alt="Rapid Recovery Peptides" className="h-8 w-auto" />
-              <p className="text-sm text-neutral-400">Contact: <a href="mailto:info@rapidrecoverypeptides.com.au" className="underline underline-offset-4">info@rapidrecoverypeptides.com.au</a></p>
-            </div>
-            <div className="md:text-right">
-              <ul className="space-y-1 text-sm text-neutral-400">
-                <li><a href="/terms" className="hover:opacity-90">Terms & Conditions</a></li>
-                <li><a href="/privacy" className="hover:opacity-90">Privacy Policy</a></li>
-                <li><a href="/returns" className="hover:opacity-90">Returns & Shipping</a></li>
-              </ul>
-            </div>
-          </div>
-          <p className="mt-8 text-xs leading-relaxed text-neutral-500">
+        <div className="mx-auto max-w-6xl px-4 py-10 text-center">
+          <img src="/logo.png" alt="Rapid Recovery Peptides" className="mx-auto h-10 w-auto mb-4" />
+          <p className="text-sm" style={{ color: colors.goldLight }}>Contact: <a href="mailto:info@rapidrecoverypeptides.com.au" className="underline">info@rapidrecoverypeptides.com.au</a></p>
+          <ul className="mt-4 space-y-1 text-sm" style={{ color: colors.goldLight }}>
+            <li><a href="/terms" className="hover:opacity-90">Terms & Conditions</a></li>
+            <li><a href="/privacy" className="hover:opacity-90">Privacy Policy</a></li>
+            <li><a href="/returns" className="hover:opacity-90">Returns & Shipping</a></li>
+          </ul>
+          <p className="mt-8 text-xs leading-relaxed" style={{ color: colors.goldLight }}>
             Disclaimer: Products are sold for laboratory research and development purposes only. Not for human consumption, medical, veterinary, or household use. No statements on this site have been evaluated by the TGA. By purchasing, you agree to our Terms & Conditions.
           </p>
-          <p className="mt-4 text-xs text-neutral-600">© {new Date().getFullYear()} Rapid Recovery Peptides. All rights reserved.</p>
+          <p className="mt-4 text-xs" style={{ color: colors.goldLight }}>© {new Date().getFullYear()} Rapid Recovery Peptides. All rights reserved.</p>
         </div>
       </footer>
     </div>
