@@ -1,13 +1,18 @@
-// 📁 styles/globals.css
-/* This file applies styles globally across all pages */
+/* 📁 styles/globals.css */
 
+/* 1️⃣ Load Tailwind styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2️⃣ (Optional) Keep or adjust your existing custom CSS */
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #fff;
+  background-color: #fff; /* You can change this to black later for your theme */
   color: #111;
 }
 
