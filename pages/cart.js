@@ -1,4 +1,6 @@
+// pages/cart.js
 import Head from "next/head";
+import Header from "../components/Header";
 import { useEffect, useRef } from "react";
 import { useCart } from "../context/CartContext";
 
@@ -16,13 +18,13 @@ export default function CartPage() {
     const existing = document.getElementById("paypal-sdk");
     if (existing) {
       renderButtons();
-      return;
+    } else {
+      const script = document.createElement("script");
+      script.id = "paypal-sdk";
+      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&currency=AUD&intent=capture`;
+      script.onload = renderButtons;
+      document.body.appendChild(script);
     }
-    const script = document.createElement("script");
-    script.id = "paypal-sdk";
-    script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&currency=AUD&intent=capture`;
-    script.onload = renderButtons;
-    document.body.appendChild(script);
 
     function renderButtons() {
       if (!window.paypal || !paypalRef.current) return;
@@ -30,7 +32,6 @@ export default function CartPage() {
       window.paypal.Buttons({
         style: { layout: "vertical", shape: "rect", label: "paypal" },
         createOrder: (_, actions) => {
-          // Simple cart total (AUD). Could pass item breakdown if needed.
           return actions.order.create({
             purchase_units: [
               {
@@ -45,8 +46,7 @@ export default function CartPage() {
           clear();
           window.location.href = `/success?orderId=${encodeURIComponent(details?.id || "")}`;
         },
-        onError: (err) => {
-          console.error("PayPal error", err);
+        onError: () => {
           window.location.href = "/cancel";
         },
       }).render(paypalRef.current);
@@ -57,6 +57,9 @@ export default function CartPage() {
     <>
       <Head><title>Cart — Rapid Recovery Peptides</title></Head>
       <div className="min-h-screen bg-blackCustom text-white">
+        {/* global header with cart badge */}
+        <Header />
+
         <div className="mx-auto max-w-4xl px-4 py-10">
           <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-goldLight to-goldDark bg-clip-text text-transparent">
             Cart
