@@ -9,21 +9,23 @@ export default async function handler(req, res) {
   if (!stripeSecret || !stripe) return res.status(501).json({ error: "Stripe not configured" });
 
   try {
-    const { items, success_url, cancel_url } = req.body; // items = [{ name, price, qty }]
+    // items = [{ name, price, qty }]
+    const { items, success_url, cancel_url } = req.body;
+
     const line_items = (items || []).map((it) => ({
       quantity: it.qty,
       price_data: {
         currency: "aud",
         unit_amount: Math.round(Number(it.price) * 100), // dollars -> cents
-        product_data: { name: it.name },
-      },
+        product_data: { name: it.name }
+      }
     }));
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items,
       success_url: success_url || `${req.headers.origin}/success`,
-      cancel_url: cancel_url || `${req.headers.origin}/cancel`,
+      cancel_url: cancel_url || `${req.headers.origin}/cancel`
     });
 
     return res.status(200).json({ url: session.url });
