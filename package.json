@@ -11,12 +11,19 @@
   "dependencies": {
     "next": "^14.2.31",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+
+    // Payments
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^3.4.1",
+    "@paypal/react-paypal-js": "^8.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.7"
   },
-  "engines": { "node": "22.x" }
+  "engines": {
+    "node": "22.x"
+  }
 }
