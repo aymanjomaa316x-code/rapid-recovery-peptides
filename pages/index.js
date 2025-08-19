@@ -1,5 +1,6 @@
 // pages/index.js
 import Head from "next/head";
+import Header from "../components/Header";
 
 export default function HomePage() {
   const products = [
@@ -16,7 +17,7 @@ export default function HomePage() {
       </Head>
 
       <div className="min-h-screen text-white flex flex-col items-center bg-blackCustom">
-        {/* Subtle gold glow background */}
+        {/* subtle gold glow bg */}
         <div
           aria-hidden
           className="pointer-events-none fixed inset-0 opacity-[0.06]"
@@ -26,19 +27,8 @@ export default function HomePage() {
           }}
         />
 
-        {/* HEADER (gold nav, no logo) */}
-        <header className="w-full">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="flex items-center justify-center py-5">
-              <nav className="flex gap-10 text-xl font-bold text-goldLight">
-                <a href="/" className="no-underline hover:text-goldDark">Homepage</a>
-                <a href="/products" className="no-underline hover:text-goldDark">Products</a>
-                <a href="/contact" className="no-underline hover:text-goldDark">Contact</a>
-                <a href="/cart" className="no-underline rounded-full border px-4 py-1 hover:text-goldDark border-goldDark">Cart</a>
-              </nav>
-            </div>
-          </div>
-        </header>
+        {/* global header with cart badge */}
+        <Header />
 
         {/* HERO */}
         <section className="w-full">
@@ -47,17 +37,16 @@ export default function HomePage() {
               Recover faster. Train harder.
             </h1>
 
-            {/* Large hero logo */}
             <img src="/logo.png" alt="Rapid Recovery Peptides Logo" className="mx-auto mt-6 mb-4 w-[320px] md:w-[520px]" />
 
-            {/* Under-construction line under the logo */}
             <p className="text-3xl md:text-5xl text-goldLight">
               Website currently under construction — Please email{" "}
-              <a href="mailto:info@rapidrecoverypeptides.com.au" className="underline">info@rapidrecoverypeptides.com.au</a>{" "}
+              <a href="mailto:info@rapidrecoverypeptides.com.au" className="underline">
+                info@rapidrecoverypeptides.com.au
+              </a>{" "}
               to buy peptides or for more info.
             </p>
 
-            {/* Subheadline */}
             <p className="mt-4 text-xl md:text-2xl text-neutral-200">
               Australia&apos;s trusted source for premium peptides. Lab-tested. Fast shipping.
             </p>
@@ -76,7 +65,7 @@ export default function HomePage() {
         {/* FEATURED PRODUCTS */}
         <section className="w-full">
           <div className="mx-auto max-w-6xl px-4 pt-10 text-center isolate">
-            {/* Bottle banner above products (220px max). Use transparent PNG for best results. */}
+            {/* banner bottle above products */}
             <img src="/products/banner.png" alt="Rapid Recovery Peptides bottle" className="mx-auto h-auto object-contain max-w-[220px]" />
 
             <h2 className="text-5xl font-semibold mb-8 mt-8 bg-gradient-to-r from-goldLight to-goldDark bg-clip-text text-transparent">
