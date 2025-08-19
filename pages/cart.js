@@ -8,7 +8,7 @@ export default function CartPage() {
   const { items, updateQty, remove, total, clear } = useCart();
   const paypalRef = useRef(null);
 
-  // ---- Stripe: start checkout on button click (optional) ----
+  // ---- Stripe: start checkout on button click ----
   async function checkoutWithStripe() {
     try {
       const res = await fetch("/api/create-checkout-session", {
@@ -17,8 +17,8 @@ export default function CartPage() {
         body: JSON.stringify({
           items: items.map(({ name, price, qty }) => ({ name, price, qty })),
           success_url: `${window.location.origin}/success`,
-          cancel_url: `${window.location.origin}/cancel`,
-        }),
+          cancel_url: `${window.location.origin}/cancel`
+        })
       });
       const data = await res.json();
       if (data?.url) {
@@ -62,9 +62,9 @@ export default function CartPage() {
               purchase_units: [
                 {
                   description: "Rapid Recovery Peptides Order",
-                  amount: { currency_code: "AUD", value: total.toFixed(2) },
-                },
-              ],
+                  amount: { currency_code: "AUD", value: total.toFixed(2) }
+                }
+              ]
             });
           },
           onApprove: async (_, actions) => {
@@ -74,7 +74,7 @@ export default function CartPage() {
           },
           onError: () => {
             window.location.href = "/cancel";
-          },
+          }
         })
         .render(paypalRef.current);
     }
@@ -137,9 +137,8 @@ export default function CartPage() {
                 </div>
               </div>
 
-              {/* Checkout buttons: Stripe (optional) + PayPal */}
+              {/* Checkout buttons: Stripe + PayPal */}
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                {/* Stripe button (optional) */}
                 <button
                   onClick={checkoutWithStripe}
                   disabled={!items.length}
@@ -148,7 +147,6 @@ export default function CartPage() {
                   Pay with Stripe
                 </button>
 
-                {/* PayPal renders into this container */}
                 <div className="flex-1" ref={paypalRef} />
               </div>
             </>
