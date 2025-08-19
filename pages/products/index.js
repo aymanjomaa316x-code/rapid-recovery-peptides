@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "../../components/Header";            // ← add this
 import { useState } from "react";
 import { PRODUCTS, PRODUCT_IMAGE, RESEARCH_NOTE } from "../../lib/products";
 import QuantityPicker from "../../components/QuantityPicker";
@@ -9,13 +10,14 @@ export default function ProductsPage() {
   const [qtyMap, setQtyMap] = useState(() =>
     Object.fromEntries(PRODUCTS.map(p => [p.sku, 1]))
   );
-
   const setQty = (sku, q) => setQtyMap((m) => ({ ...m, [sku]: q }));
 
   return (
     <>
       <Head><title>Products — Rapid Recovery Peptides</title></Head>
       <div className="min-h-screen bg-blackCustom text-white">
+        <Header />                                       {/* ← add this */}
+
         <div className="mx-auto max-w-6xl px-4 py-10">
           <h1 className="text-4xl md:text-6xl font-bold text-center bg-gradient-to-r from-goldLight to-goldDark bg-clip-text text-transparent">
             Products
@@ -37,7 +39,9 @@ export default function ProductsPage() {
                   </div>
 
                   <div className="mt-4 flex items-center justify-between">
-                    <h3 className="text-lg font-medium">{p.name}</h3>
+                    <a href={`/products/${p.sku}`} className="text-lg font-medium hover:underline">
+                      {p.name}
+                    </a>
                     <span className="rounded-md px-2 py-1 text-sm font-semibold bg-gradient-to-r from-goldLight to-goldDark text-black">
                       ${p.price.toFixed(2)}
                     </span>
