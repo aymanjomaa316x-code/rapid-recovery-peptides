@@ -39,12 +39,14 @@ export default function HomePage() {
 
             <img src="/logo.png" alt="Rapid Recovery Peptides Logo" className="mx-auto mt-6 mb-4 w-[320px] md:w-[520px]" />
 
-            <p className="text-3xl md:text-5xl text-goldLight">
-              Website currently under construction — Please email{" "}
-              <a href="mailto:info@rapidrecoverypeptides.com.au" className="underline">
-                info@rapidrecoverypeptides.com.au
-              </a>{" "}
-              to buy peptides or for more info.
+            <p className="text-2xl md:text-3xl text-goldLight max-w-3xl mx-auto leading-relaxed">
+              Recovery peptides are widely studied for their potential role in supporting
+              cellular repair, reducing inflammation, and enhancing recovery after stress
+              or injury. Research has explored their ability to promote faster healing,
+              improve joint function, and support overall performance. At Rapid Recovery
+              Peptides, we provide high-purity, lab-tested peptides for research purposes
+              only — trusted by scientists and laboratories seeking quality compounds for
+              advanced studies.
             </p>
 
             <p className="mt-4 text-xl md:text-2xl text-neutral-200">
