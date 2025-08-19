@@ -13,7 +13,6 @@ export default function ProductDetailPage() {
   const { add } = useCart();
 
   const product = PRODUCTS.find((p) => p.sku === slug);
-
   const [qty, setQty] = useState(1);
 
   if (!product) {
@@ -24,7 +23,9 @@ export default function ProductDetailPage() {
           <Header />
           <div className="mx-auto max-w-4xl px-4 py-16 text-center">
             <h1 className="text-3xl font-bold">Product not found</h1>
-            <p className="mt-3 text-neutral-400">Please go back to the <a href="/products" className="underline">Products</a> page.</p>
+            <p className="mt-3 text-neutral-400">
+              Please go back to the <a href="/products" className="underline">Products</a> page.
+            </p>
           </div>
         </div>
       </>
@@ -44,6 +45,15 @@ export default function ProductDetailPage() {
         <Header />
 
         <main className="mx-auto max-w-5xl px-4 py-12">
+          {/* Breadcrumbs */}
+          <nav className="text-sm text-neutral-400 mb-6">
+            <a href="/" className="hover:underline">Home</a>
+            <span className="mx-2">›</span>
+            <a href="/products" className="hover:underline">Products</a>
+            <span className="mx-2">›</span>
+            <span className="text-goldLight">{product.name}</span>
+          </nav>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* Image */}
             <div className="rounded-2xl bg-neutral-950/40 border border-neutral-800/70 p-6">
