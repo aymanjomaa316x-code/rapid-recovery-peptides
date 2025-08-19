@@ -1,22 +1,42 @@
 // pages/contact.js
 import Head from "next/head";
 import Header from "../components/Header";
+import { useCallback } from "react";
 
 export default function ContactPage() {
   const email = "info@rapidrecoverypeptides.com.au";
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = (data.get("name") || "").toString().trim();
+    const from = (data.get("email") || "").toString().trim();
+    const msg  = (data.get("message") || "").toString().trim();
+
+    const subject = `Website enquiry from ${name || "customer"}`;
+    const body = [
+      `Name: ${name}`,
+      `Email: ${from}`,
+      "",
+      "Message:",
+      msg
+    ].join("\n");
+
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Open user’s mail app without submitting a form
+    window.location.href = mailto;
+  }, []);
 
   return (
     <>
       <Head>
         <title>Contact — Rapid Recovery Peptides</title>
-        <meta
-          name="description"
-          content="Contact Rapid Recovery Peptides. Australia's trusted source for premium research peptides."
-        />
+        <meta name="description" content="Contact Rapid Recovery Peptides." />
       </Head>
 
       <div className="min-h-screen bg-blackCustom text-white flex flex-col">
-        {/* Subtle gold glow like the homepage */}
+        {/* subtle background glow */}
         <div
           aria-hidden
           className="pointer-events-none fixed inset-0 opacity-[0.06]"
@@ -26,7 +46,6 @@ export default function ContactPage() {
           }}
         />
 
-        {/* Site header with cart badge */}
         <Header />
 
         <main className="w-full">
@@ -36,32 +55,25 @@ export default function ContactPage() {
             </h1>
 
             <p className="mt-4 text-lg md:text-xl text-neutral-200">
-              Have a question? Reach out at{" "}
+              Prefer email?{" "}
               <a href={`mailto:${email}`} className="underline text-goldLight">
                 {email}
               </a>
-              .
             </p>
 
-            {/* Divider */}
             <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-goldLight to-goldDark rounded-full" />
 
-            {/* Simple email form (opens the user's mail app) */}
             <section className="mt-10 text-left">
               <div className="rounded-2xl border border-neutral-800/70 bg-neutral-950/40 p-6">
                 <h2 className="text-2xl font-semibold bg-gradient-to-r from-goldLight to-goldDark bg-clip-text text-transparent">
                   Send a Message
                 </h2>
                 <p className="mt-2 text-sm text-neutral-400">
-                  This form opens your email app with the details pre-filled.
+                  This opens your mail app with the details pre-filled.
                 </p>
 
-                <form
-                  className="mt-6 space-y-4"
-                  action={`mailto:${email}`}
-                  method="POST"
-                  encType="text/plain"
-                >
+                {/* NOTE: no action/method; we handle submit in JS */}
+                <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
                   <div>
                     <label className="block text-sm text-neutral-300 mb-1">Your Name</label>
                     <input
@@ -105,17 +117,14 @@ export default function ContactPage() {
                   </div>
                 </form>
 
-                {/* Compliance note */}
                 <p className="mt-6 text-xs text-neutral-500">
-                  Products are sold for laboratory research use only. Not for human consumption. No statements on this
-                  site have been evaluated by the TGA.
+                  Products are sold for laboratory research use only. Not for human consumption. No statements on this site have been evaluated by the TGA.
                 </p>
               </div>
             </section>
           </div>
         </main>
 
-        {/* Footer (matches homepage) */}
         <footer className="mt-auto w-full border-t border-neutral-900/80">
           <div className="mx-auto max-w-6xl px-4 py-10 text-center">
             <img src="/logo.png" alt="Rapid Recovery Peptides" className="mx-auto h-10 w-auto mb-4" />
